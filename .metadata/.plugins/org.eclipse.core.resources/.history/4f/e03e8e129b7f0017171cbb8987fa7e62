@@ -1,0 +1,18 @@
+var app = angular.module('chatApp',['ngRoute','ngCookies','firebase']);
+app.config(function($routeProvider) {
+	$routeProvider
+	.when('/home', {
+		templateUrl : 'Home/Home.html'	
+	})
+	
+	.when('/goRegister', {
+		templateUrl : 'User/Register.html',
+		controller : 'UserController'
+	})
+	
+
+	.otherwise({
+		redirectTo : '/'
+			
+	});
+});

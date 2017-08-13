@@ -1,0 +1,34 @@
+app.controller('UserController',['$scope','$location','$firebaseArray','$rootScope',function($scope,$location,$rootScope,$firebaseArray){
+	
+	
+	console.log("UserController")
+	
+	var ref=firebase.database().ref().child('users');
+	$scope.users=$firebaseArray(ref);
+	console.log(ref);
+	$scope.addUsers=function(){
+		console.log("Adding users")
+		$scope.users.$add({
+			username: $scope.username,
+			role:$scope.role,
+			email:$scope.email,
+			contact:$scope.contact
+			})
+			.then(function(ref){
+				var id=ref.key();
+				console.log("Added Contact"+id);
+				$scope.username='';
+				$scope.role='';
+				$scope.email='';
+				$scope.contact=''
+				
+			});
+	}
+	
+	
+	
+	
+	
+	
+	
+}])

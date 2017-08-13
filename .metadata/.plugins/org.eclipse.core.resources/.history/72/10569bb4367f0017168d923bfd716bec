@@ -1,0 +1,24 @@
+app.controller('UserController',function($scope,$location,$firebaseArray){
+	
+	
+	console.log("UserController")
+	
+	var ref=firebase.database().ref().child('users');
+	$scope.users=$firebaseArray(ref);
+	$scope.submit=function(){
+		$scope.users.$add({
+			username:$scope.username,
+			role:$scope.role,
+			email:$scope.email,
+			contact:$scope.contact
+			
+		})
+	}
+	
+	
+	
+	
+	
+	
+	
+})
